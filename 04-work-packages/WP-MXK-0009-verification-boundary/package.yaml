@@ -1,0 +1,38 @@
+id: WP-MXK-0009
+title: Verification boundary integration
+status: done
+execution_class: complex
+review_class: elevated
+commitment: committed
+scope: >
+  Integrate REQ-MXK-VER-01 through REQ-MXK-VER-05 from WP-MXK-0008 into the canonical
+  MXM requirements baseline, enforcement specification, architecture decisions,
+  traceability, and conformance expectations. Preserve the distinction between generative
+  inference, evidence, verification, authority, and execution.
+authority_boundary: >
+  May change repository-local requirements, SPEC, traceability, ADRs, and tests needed to
+  encode the approved verification-boundary findings. Does not authorize a release tag,
+  changes to another repository, claims that MXM makes model output true, or automatic
+  trust of a verifier merely because it is a different model/process.
+requirements:
+  - REQ-MXK-VER-01
+  - REQ-MXK-VER-02
+  - REQ-MXK-VER-03
+  - REQ-MXK-VER-04
+  - REQ-MXK-VER-05
+actions:
+  - "DONE: canonical REQ-MXK-VER-01 through REQ-MXK-VER-05 added under 02-systems-baseline/2.1-requirements."
+  - "DONE: SPEC §8A defines property-bounded verification, functional independence, explicit failure states, and system-boundary claims."
+  - "DONE: ADR-MXK-0006 records the architectural decision and limits."
+  - "DONE: TRACEABILITY credits existing enforcement only where demonstrated and records generic verification controls as pending/partial."
+  - "DONE: no runtime implementation was fabricated; generalized typed Verification and assurance-level gating remain follow-on work."
+verification: >
+  Canonical requirements, SPEC §8A, ADR-MXK-0006 and TRACEABILITY agree. Existing kernel
+  authorization/receipt/replay tests are credited only for authority and action-outcome
+  properties they actually establish. Conformance items 18-22 explicitly expose the remaining
+  implementation gaps. This WP changes normative architecture/documentation only and therefore
+  does not claim new executable enforcement.
+disposition: >
+  Done. Normative integration is complete. Follow-on implementation should introduce a typed
+  Verification representation and assurance gate, then promote pending conformance items only
+  when executable positive/negative tests pass.

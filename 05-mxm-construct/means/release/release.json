@@ -1,0 +1,15 @@
+{
+  "name": "mxm-kernel",
+  "release_paths": [
+    "05-mxm-construct/means/enforcement",
+    "05-mxm-construct/means/mcp",
+    "05-mxm-construct/means/release"
+  ],
+  "conformance_suites": [
+    "05-mxm-construct/means/enforcement/tests",
+    "05-mxm-construct/means/mcp/tests"
+  ],
+  "python_min": "3.10",
+  "platform": "posix",
+  "exclude": ["__pycache__", ".pytest_cache", "*.pyc"]
+}

@@ -1,0 +1,35 @@
+id: WP-MXK-0012
+title: EAF/IFA minimum viable implementation
+status: approved
+execution_class: complex
+review_class: elevated
+scope: >
+  Implement the smallest working slice of the EAF specification
+  (SPEC-MXM-EAF-0001, ratified baseline v0.2.1): claim-to-evidence
+  traceability and IFA source-transformation fidelity checks
+  (omission, distortion, addition, attribution) run over representative
+  analytical workflows, scored against the EAF requirements in
+  02-systems-baseline/2.1-requirements/EAF-requirements.md. This realizes
+  the initial work package the SPEC itself proposes (WP-MXM-EAF-0001) in
+  this repository's MXK series. Out of scope: the full EAF metric battery,
+  TMF implementation (WP-MXK-0013 covers retrieval/admission only), and
+  any claim that automated scores constitute epistemic warrant; human
+  acceptance stays distinct, per the SPEC.
+authority_boundary: >
+  Approved by the Principal Operator 2026-10-23.
+  May add implementation code, fixtures, and tests in this repository and
+  record evaluation results in 2.5-verification. Does NOT authorize
+  treating automated evaluation output as principal acceptance, deployment
+  of the slice into any production workflow, or changes to the ratified
+  SPEC (a new ADR or version increment is required).
+actions:
+  - Select two representative workflows (one research synthesis, one operational analysis) and freeze their source sets as fixtures.
+  - Implement claim extraction with evidence links and the four IFA fidelity checks over source-to-output transformations.
+  - Score the fixtures against the EAF requirements; record traceability, unsupported-claim detection, and fidelity results with limits.
+  - Update the traceability matrix (CAP-03, CAP-04, CAP-17 rows) with whatever the evidence supports, no more.
+verification: >
+  Frozen fixtures reproduce the recorded scores; a seeded-defect run
+  (planted omission, distortion, addition, misattribution) is detected by
+  the corresponding check; results and limits filed in 2.5-verification;
+  repository suite and layout verifier green.
+disposition: open

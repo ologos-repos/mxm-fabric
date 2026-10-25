@@ -1,0 +1,46 @@
+id: WP-MXK-0015
+title: Baseline maturation (00-03)
+status: done
+execution_class: standard
+review_class: elevated
+scope: >
+  Mature baselines 00-03 from scaffolding to substance, per the
+  2026-10-23 file-level inventory filed as this package's evidence.
+  In scope: land the 01 strategic documents (drafted from the
+  principal's published record; redline gate below); write 2.3
+  behavior from the kernel's implemented semantics; write 2.4
+  interfaces against existing surfaces and the mxm-contracts work;
+  replace the five stub subsection READMEs in 02 with real scope
+  notes; write 03's first content (the vendored-kernel deployment
+  pattern); publish the cross-baseline traceability spine in
+  2.5-verification. Out of scope: console-era solution topologies
+  (deferred until WP-MXK-0014 phase 3 exists), any change to ratified
+  documents without a new ADR, and implementing capabilities.
+authority_boundary: >
+  Approved by the Principal Operator 2026-10-23. REDLINE GATE: PASSED
+  for step 2; the principal approved the 01 documents as drafted on
+  2026-10-23, and they land with this package's opening change.
+  ACCURACY GATE (standing): nothing in 02 or 03 may describe behavior,
+  interfaces, or configurations that the implementation does not
+  exhibit; where the record is ahead of the code, the text says so.
+  Drafting and PR preparation for steps 3-5 are authorized under this
+  approval; each step lands through the normal PR route.
+actions:
+  - "Step 1 (done): adopt the file-level maturity inventory as the baseline of record; filed as evidence under this package."
+  - "Step 2 (lands with this package): the four 01 documents (vision, strategy, objectives/KRs, alignment references), ratified as drafted."
+  - "Step 3: write 2.3-behavior from implemented semantics (work chain; halt and outcome states; failure as a terminal, representable state) and 2.4-interfaces against the MCP surface, session tooling, vendoring boundary, and WP-MXK-0014 phase-2 contracts; replace the 02 subsection stub READMEs."
+  - "Step 4: write 03's kernel deployment pattern (vendored release, hash pinning, offline conformance, air-gapped operation) as the first solution configuration."
+  - "Step 5: publish the cross-baseline traceability spine in 2.5-verification (objectives to requirements to architecture to solutions to implementation to verification), then hand its upkeep to WP-MXK-0011."
+verification: >
+  Template-stub count in baselines 00-03 goes from 9 to 0 across the
+  package's steps (4 of 9 closed by step 2); every 02 architecture
+  claim traces to a requirement or is marked untraced-with-rationale;
+  the spine renders a complete chain for at least the kernel
+  capability set (CAP-08, 09, 10, 12, 15); repository-wide link scan
+  clean; layout verifier and full suite green on every landing PR.
+disposition: >
+  - "DONE: step 1, maturity inventory adopted as the baseline of record (evidence under this package)."
+  - "DONE: step 2, the four 01 strategic documents landed ratified as drafted (PR #14)."
+  - "DONE: step 3, 2.3-behavior and 2.4-interfaces written from the implementation; 02 stub READMEs replaced; zero template stubs remain in 00-03 (PR #15)."
+  - "DONE: step 4, the vendored-kernel deployment pattern published as 03's first solution configuration (PR #15)."
+  - "DONE: step 5, the cross-baseline traceability spine published in 2.5-verification; upkeep handed to WP-MXK-0011."

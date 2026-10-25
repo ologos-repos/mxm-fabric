@@ -1,0 +1,55 @@
+id: WP-MXK-0005
+title: Signed act-bound authorizations and one transactional event log
+status: done
+execution_class: complex
+review_class: elevated
+scope: >
+  Roadmap step 5 (ADR-MXK-0003), the increment-3 design the Principal Operator approved on
+  2026-09-28 (source meta-harness issue 32).
+  - Operator and Advisor acts authorized by standard-library Ed25519 signatures,
+    single-use and bound to the act, the unit and the pin.
+  - One hash-chained event log holding all kernel state, replayed and re-validated by
+    every kernel.
+  - Closing source meta-harness issue 36 release blockers 1-5 and F-19.
+  - A principal-side issuing tool.
+
+  Out of scope:
+  - memory as governed actions (step 6);
+  - release signing;
+  - engine registration;
+  - vendoring;
+  - a release tag.
+authority_boundary: >
+  May change the enforcement core, its tests, the MCP launcher and tests, the SPEC,
+  traceability and the ADR in this repository. Does not authorize a release tag, engine
+  registration, or changes to another repository.
+requirements:
+  - id: REQ-MXK-AUT-01
+    text: An Operator or Advisor act takes effect only with an authorization issued outside the engine, verifiable by the kernel without holding any secret, bound to exactly that act, unit and pin, and usable once.
+    source: "Principal Operator 2026-09-28: signed, single-use, act-bound authorizations issued outside the engine process"
+  - id: REQ-MXK-LOG-01
+    text: All kernel state is one transactional append-only event log from which WorkUnits are rebuilt, with an externally anchorable head.
+    source: "Principal Operator 2026-09-28: one transactional append-only event log, WorkUnits rebuilt from it"
+  - id: REQ-MXK-LOG-02
+    text: Integrity and I/O faults in the log or anchor halt the kernel; they never raise and never take effect.
+    source: "source meta-harness issue 36 blocker 1"
+  - id: REQ-MXK-AUT-02
+    text: Everything is implemented with the standard library, for air-gapped harnesses.
+    source: "Principal Operator: each harness carries its own self-contained kernel, air-gapped included"
+actions:
+  - "DONE: mxm/ed25519.py (RFC 8032, strict verify), mxm/authz.py (authorizations, trust registry, signer), mxm/eventlog.py (locked, anchored log), kernel.py rebuilt on the log with one record validation."
+  - "DONE: mxm_principal.py keygen/act; MCP launcher takes --trust/--anchor and serves units opened in another process."
+  - "DONE: tests: enforcement 71 passed + 3 strict xfails (F-19 promoted); Ed25519 vectors and strictness; MCP 9; release 13. Stdlib runner parity."
+  - "DONE: 21-mutation check: every disabled defence fails the suite (evidence/verification.md)."
+  - "DONE: SPEC v0.2 (§3, §7, §8, §10, §11), TRACEABILITY.md, ADR-MXK-0003."
+verification: >
+  Full repository suite passes. The stdlib runner matches pytest on every suite. Ed25519 was
+  cross-checked against OpenSSL and the cryptography package. Every one of 21 deliberately
+  disabled defences is caught. Details are in evidence/verification.md.
+disposition: >
+  Done when merged. Carried forward:
+  - independent Advisor review of the authorization and log design, recommended before this
+    kernel is represented as an enforcement boundary;
+  - memory under the log (step 6);
+  - release signing;
+  - a constant-time or external signer.

@@ -1,0 +1,41 @@
+id: WP-MXK-0014
+title: Construct consolidation under 05-mxm-construct
+status: approved
+execution_class: complex
+review_class: elevated
+scope: >
+  Execute the consolidation specification (2026-10-23) as ratified by
+  ADR-MXM-0002: stand up mxm-contracts with versioned API and event
+  schemas; extract a headless, transport-independent mxm-core runtime/API
+  over the existing enforcement core; build mxm-console as thin TUI
+  (first) and web (second) clients on those contracts; harden verifier
+  and bootstrap tests before any canonical path changes. In scope:
+  phases 1-6 below, additive construction only. Out of scope: relocating
+  means/ (phase-5 decision under the migration/release gate), any change
+  to ratified baseline documents without a new ADR, production
+  deployment, and external publication.
+authority_boundary: >
+  Architecture gate PASSED 2026-10-23 (ADR-MXM-0002 ratified): may add
+  directories, contracts, code, and tests in this repository and amend
+  the layout verifier as R-11 requires, on feature branches through the
+  normal PR route. Does NOT authorize: integrating the TUI before the
+  principal passes the runtime gate (core API and authorization
+  conformance reviewed); moving or deleting any existing canonical file;
+  amending the release contract (ADR-MXK-0001); or production cutover.
+  The runtime gate and the migration/release gate each require explicit
+  principal approval at the gate.
+actions:
+  - "Phase 1 (this package's opening change): ratify ADR-MXM-0002; freeze the file-by-file migration inventory as phase evidence under this package."
+  - "Phase 2: create mxm-contracts skeletons and v1 API/event schemas (identity, delegation, authorization envelopes, evidence references, errors, runtime semantics per R-10), transport-independent per ADR-MXM-0002 item 5; extend the verifier allowlist and negative tests."
+  - "Phase 3: implement the mxm-core headless API over the enforcement core in place; stdio JSON-RPC and HTTP as adapters over the same application services; compatibility wrappers retained until conformance passes. RUNTIME GATE at phase end."
+  - "Phase 4: build the TUI console against the contracts; then the web console on the same contracts and event stream."
+  - "Phase 5: decide means/ relocation (D1) on phase 1-4 evidence; if approved at the migration/release gate, execute as its own ADR-gated change with rollback."
+  - "Phase 6: release validation: offline vendoring intact, component versions independent, integration conformance and operational evidence filed in 2.5-verification. MIGRATION/RELEASE GATE: principal approves cutover."
+verification: >
+  Every acceptance criterion in the specification is matched to a check
+  in the conformance plan filed with the 2026-10-23 assessment: verifier
+  and suite green at each phase gate; fresh-session Claude Code and
+  Codex trials after any bootstrap-path change; mutation check re-run
+  against the core API boundary; no stale links; vendored kernel release
+  validated offline from a clean clone.
+disposition: open

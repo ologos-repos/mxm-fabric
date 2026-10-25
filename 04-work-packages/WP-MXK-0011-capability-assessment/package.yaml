@@ -1,0 +1,32 @@
+id: WP-MXK-0011
+title: Capability assessment maintenance and evidence population
+status: approved
+execution_class: standard
+review_class: standard
+scope: >
+  Own the capability traceability matrix in
+  02-systems-baseline/2.5-verification/capability-traceability.md: keep it
+  current as evidence changes, and work the Specified-only capabilities
+  (CAP-01 through CAP-07, CAP-11, CAP-17) toward assessed status by
+  nominating representative deployments or suppliers and recording their
+  evidence, or by recording a deliberate Not assessed with rationale.
+  Out of scope: implementing the capabilities themselves (each is its own
+  package or a deployment concern) and promoting any attribute without the
+  evidence the conformance model requires.
+authority_boundary: >
+  Approved by the Principal Operator 2026-10-23. This package now formally governs capability-traceability.md and, from WP-MXK-0015's close, the traceability spine's upkeep.
+  May edit the matrix and file assessment records in 2.5-verification, and
+  may evaluate evidence a deployment supplies. Does NOT authorize
+  attribute promotion on inference, adjacent-capability credit, or vendor
+  claims taken at face value, and does not authorize external publication
+  of assessment results.
+actions:
+  - Adopt the matrix as filed 2026-10-23 as the baseline assessment.
+  - For each Specified-only capability, nominate an evidence source (deployment, supplier, or test program) or record Not assessed with rationale and a revisit trigger.
+  - Re-assess on any change to the contracts, the conformance model, or the enforcement/MCP/release evidence base.
+  - Keep the evaluation input records and annotations in 2.5-verification linked from the matrix.
+verification: >
+  Every matrix row names evidence, a location, and a date, or an explicit
+  Not assessed; a diff review shows no attribute changed without new cited
+  evidence; repository suite and layout verifier green.
+disposition: open

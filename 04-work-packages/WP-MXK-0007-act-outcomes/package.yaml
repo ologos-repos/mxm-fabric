@@ -1,0 +1,35 @@
+id: WP-MXK-0007
+title: Signed principal records and closed act outcomes
+status: done
+execution_class: complex
+review_class: elevated
+scope: >
+  Disposition the Principal Advisor's follow-up REVISE of WP-MXK-0006 (2026-09-28):
+  - principal records must be signed, except the kernel's unverified denials, and must
+    attribute the right principal;
+  - every act owing evidence is closed by one outcome record;
+  - an unwritable closing record halts;
+  - the SPEC defines the logged decision versus the outcome and reconciles its anchor claims;
+  - tests and mutation coverage.
+authority_boundary: >
+  May change the enforcement core, its tests, the SPEC, traceability and ADRs in this
+  repository. Does not authorize a release tag, engine registration, or changes to another
+  repository, and does not decide whether the kernel is an enforcement boundary.
+requirements:
+  - id: REQ-MXK-AUT-05
+    text: Every Operator or Advisor record in the log is signed by that role's trusted key and names its principal, except the kernel's own record of an unverified attempt.
+    source: "Principal Advisor follow-up REVISE, 2026-09-28, finding 4"
+  - id: REQ-MXK-LOG-03
+    text: Every act that owes evidence is closed by exactly one record stating its outcome, and an outcome that cannot be recorded halts the kernel.
+    source: "Principal Advisor follow-up REVISE, 2026-09-28, findings 2, 3, 6"
+actions:
+  - "DONE: unsigned principal records limited to unverified denials; principal attribution checked; Assistant records name no principal."
+  - "DONE: closing outcomes (done, failed, not_executed, unknown); orphaned obligations closed as unknown on catch-up; not_executed after an anchor halt; evidence_unwritable halts."
+  - "DONE: SPEC §7/§8 (decision vs outcome; anchor does not prevent appends; kernel records not authenticated); ADR-MXK-0005."
+  - "DONE: tests (enforcement 161 + 3 strict xfails); 40/40 mutations caught; forgery helper fixed after the new checks masked 10 older defences."
+verification: >
+  Full repository suite and the stdlib runner pass with matching counts. Every one of 40
+  disabled defences fails the suite. See evidence/verification.md.
+disposition: >
+  Done when merged. The Principal Operator decides whether the kernel is represented as an
+  enforcement boundary under the stated preconditions; a further Advisor review is optional.

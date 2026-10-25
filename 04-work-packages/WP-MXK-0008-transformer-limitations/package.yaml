@@ -1,0 +1,51 @@
+id: WP-MXK-0008
+title: Transformer limitations and independent verification boundary
+status: done
+execution_class: complex
+review_class: elevated
+commitment: committed
+scope: >
+  Evaluate Sikka and Sikka, "Hallucination Stations: On Some Basic Limitations of
+  Transformer-Based Language Models" (arXiv:2507.07505), against the MXM kernel architecture.
+  Audit the paper's formal complexity and verification claims, distinguish theorem-level
+  results from extrapolation, and derive only defensible architectural requirements for
+  external state, provenance, deterministic execution, independent verification, and
+  authority boundaries.
+authority_boundary: >
+  May research, analyze, and propose changes to MXM requirements, architecture, SPEC,
+  traceability, ADRs, tests, and documentation in this repository. Does not authorize
+  acceptance of the paper's claims as MXM doctrine without proof audit, release/tagging,
+  publication outside this repository, changes to TMF or other repositories, or a claim
+  that transformer limitations are eliminated by MXM.
+requirements:
+  - id: REQ-MXK-VER-01
+    text: A generative inference path shall not be the sole verifier of its own consequential claim when qualified independent verification is required and available.
+    source: "WP-MXK-0008 evidence/sikka-sikka-2025-audit.md"
+  - id: REQ-MXK-VER-02
+    text: MXM shall distinguish generative inference from authoritative state, deterministic computation, external execution, provenance, validation, and action receipts.
+    source: "WP-MXK-0008 evidence/sikka-sikka-2025-audit.md"
+  - id: REQ-MXK-VER-03
+    text: Verification mechanisms shall state the property verified, evidence source, and material limitations and shall not imply assurance outside that boundary.
+    source: "WP-MXK-0008 evidence/sikka-sikka-2025-audit.md"
+  - id: REQ-MXK-VER-04
+    text: Resource or assurance insufficiency shall remain explicitly unresolved, unsupported, timed out, approximate, or failed rather than becoming an authoritative assertion.
+    source: "WP-MXK-0008 evidence/sikka-sikka-2025-audit.md"
+  - id: REQ-MXK-VER-05
+    text: Computational capability or impossibility claims shall name their system boundary; component limits shall not be promoted to composite-system limits without a separate argument.
+    source: "WP-MXK-0008 evidence/sikka-sikka-2025-audit.md"
+actions:
+  - "DONE: preserved canonical primary-source metadata for arXiv:2507.07505v3."
+  - "DONE: reconstructed and audited the core complexity, time-hierarchy, agent-verification, and reasoning-model claims."
+  - "DONE: identified scope defects involving total autoregressive computation, upper-vs-lower bounds, output-size arguments, TSP verification, and tool-using composite systems."
+  - "DONE: claim ledger classifies harvested, qualified, conjectural, overbroad, and rejected claims."
+  - "DONE: derived five MXM verification/system-boundary requirements without treating the paper's Theorem 1 as an MXM theorem."
+  - "DONE: TMF retained as downstream integration point; no cross-repository change made."
+verification: >
+  Primary source reviewed at arXiv v3. Evidence audit records claim-by-claim disposition,
+  formal scope objections, architectural harvest, confidence, and five proposed MXM
+  requirements. The paper's strongest universal hallucination theorem is explicitly not
+  adopted. No component-level complexity claim is promoted to a composite-system limit.
+disposition: >
+  Done. Audit is repository evidence. REQ-MXK-VER-01 through REQ-MXK-VER-05 are approved
+  findings of this work package for subsequent baseline integration; implementation changes
+  should be carried by a follow-on package so traceability remains explicit.

@@ -1,0 +1,32 @@
+id: WP-MXK-0013
+title: TMF governed retrieval and admission validation
+status: approved
+execution_class: complex
+review_class: elevated
+scope: >
+  Validate the governance half of governed retrieval before any TMF
+  authority is promoted: admission controls on candidate records
+  (lineage, defeaters, supersession), and eligibility-before-retrieval
+  enforcement per architectural rule 1 of the capability contracts, so
+  similarity ranking can never confer admission or authority. Exercised
+  against a reference TMF-shaped store built for evaluation; a production
+  TMF implementation is out of scope, as is expanding semantic retrieval
+  capability itself (CAP-01, CAP-02 remain deployment-supplied).
+authority_boundary: >
+  Approved by the Principal Operator 2026-10-23.
+  May build the evaluation store, admission and eligibility tests, and
+  evidence records in this repository. Does NOT authorize promoting any
+  memory to authoritative status in a live system, connecting the
+  evaluation store to a real knowledge base, or changing the ratified
+  contracts or SPEC.
+actions:
+  - Build a minimal TMF-shaped store with admission states (candidate, admitted, superseded, defeated) and provenance on every record.
+  - Implement the eligibility filter so retrieval returns admitted records only, with excluded candidates inspectable but never authoritative.
+  - Test the boundary: unadmitted and superseded records must not surface as authoritative in any retrieval path, including cache and rerank paths.
+  - Record admission, promotion, and rollback evidence; update the traceability matrix (CAP-02, CAP-14 rows) accordingly.
+verification: >
+  Adversarial retrieval tests pass (no path returns unadmitted material as
+  authoritative); admission and supersession transitions are fully
+  evidenced in the store log; results filed in 2.5-verification;
+  repository suite and layout verifier green.
+disposition: open

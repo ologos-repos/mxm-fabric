@@ -1,0 +1,45 @@
+id: WP-MXK-0003
+title: Release and vendoring contract
+status: done
+execution_class: complex
+review_class: standard
+scope: >
+  Roadmap step 3 (ADR-MXK-0001). Let every standalone meta-harness, air-gapped ones
+  included, prove offline that its vendored kernel is exactly a released kernel and still
+  conforms.
+  - A manifest-pinned release format.
+  - An offline, fail-closed verifier: integrity, containment, conformance.
+  - A standard-library conformance runner, because pytest cannot be assumed.
+  - A vendoring install that copies, verifies and locks.
+  - A CI step that keeps every change releasable.
+
+  Out of scope:
+  - cutting or tagging a release;
+  - vendoring into any harness (roadmap step 7);
+  - release signing, which pairs with the signed act-bound authorizations.
+authority_boundary: >
+  May add the release tooling, its tests, the ADR and a CI step in this repository. Does not
+  authorize tagging a release or changing any other repository.
+requirements:
+  - id: REQ-MXK-REL-01
+    text: A release pins every file and the whole tree by SHA-256, and carries its own tooling.
+    source: "Principal Operator: every harness carries its own self-contained, enforced kernel"
+  - id: REQ-MXK-REL-02
+    text: Verification needs no network and nothing outside the standard library and the release, and fails closed on any integrity, containment or conformance problem.
+    source: "Principal Operator: air-gapped ecosystems"
+  - id: REQ-MXK-REL-03
+    text: Vendoring refuses unverified releases and wrong pins, re-verifies the copy, and records a lock.
+    source: "Principal Operator: authority flows down; vendored copies are never edited in place"
+actions:
+  - "DONE: release.json + release.py (build / verify / install) and conformance.py (stdlib runner)."
+  - "DONE: 13 contract tests: pins, clean verify with conformance, tamper modify/delete/add/pin, external import, install + lock + wrong-pin refusal, runner failure and strict-xpass detection, fixtures/parametrize/raises, unsupported-feature refusal, parity on the kernel suite, CLI exit codes."
+  - "DONE: parity: stdlib runner and real pytest both report 31 passed, 4 xfailed on the kernel suite."
+  - "DONE: air-gap proof: release built and verified inside a network namespace with only loopback, isolated interpreter without site-packages (pytest not importable): ok; a one-line tamper was then caught as modified."
+  - "DONE: CI step builds and verifies a release on every PR in isolated mode."
+  - "DONE: ADR-MXK-0001."
+verification: >
+  The full repository suite passes (65 passed, 4 xfailed). The CI release-contract step
+  passes. evidence/verification.md records the air-gap proof and the parity result.
+disposition: >
+  Done when merged. Carried forward: POSIX-only (fcntl); release signing; first release and
+  first vendored adoption (roadmap step 7).

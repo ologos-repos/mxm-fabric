@@ -1,0 +1,31 @@
+# CI for the process home. This is the required merge gate: main is protected and
+# CI / conformance must pass. The same suite runs advisory on the public mirror from
+# .github/workflows/ci.yml; keep the two in step. Action URLs are absolute because
+# the process host does not default to github.com for actions.
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  conformance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: https://github.com/actions/checkout@v4
+      - uses: https://github.com/actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install pytest
+      - name: Repository layout
+        run: python 00-meta-model/verify-repository-layout.py
+      - name: Test suites
+        run: python -m pytest -q -p no:cacheprovider
+      # ADR-MXK-0001: every change must stay releasable. Build a release and verify it the way
+      # an air-gapped harness would: isolated interpreter, no site-packages, stdlib runner.
+      - name: Release contract (build + offline verify)
+        run: |
+          out=$(python 05-mxm-construct/means/release/release.py build --version 0.0.0-ci --out "${RUNNER_TEMP:-/tmp}/mxk-release")
+          agg=$(printf '%s' "$out" | python -c "import sys,json;print(json.load(sys.stdin)['aggregate_sha256'])")
+          python -I -S "$RUNNER_TEMP/mxk-release/05-mxm-construct/means/release/release.py" verify "${RUNNER_TEMP:-/tmp}/mxk-release" --expect "$agg"

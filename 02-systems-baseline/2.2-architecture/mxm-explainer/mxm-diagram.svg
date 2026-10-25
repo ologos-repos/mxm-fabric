@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1180" viewBox="0 0 1600 1180">
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#e9a13b"/>
+    </marker>
+    <marker id="arrSm" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#e9a13b"/>
+    </marker>
+  </defs>
+
+  <!-- background -->
+  <rect x="0" y="0" width="1600" height="1180" fill="#FAF6EE"/>
+
+  <!-- header -->
+  <text x="800" y="100" text-anchor="middle" font-family="Georgia, 'DejaVu Serif', serif" font-size="58" font-weight="bold" fill="#14142B">MxM: Multi-Mode Meta-Harness</text>
+  <text x="800" y="142" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="22" fill="#5A5A6E">Six surfaces that govern an AI aide.</text>
+
+  <!-- triad -->
+  <text x="800" y="202" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="18" letter-spacing="4" fill="#8A8578">PRINCIPAL GOVERNANCE TRIAD</text>
+
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <rect x="140" y="222" width="380" height="112" rx="14" fill="#FFFFFF" stroke="#E2D9C2" stroke-width="1.5"/>
+    <text x="330" y="256" text-anchor="middle" font-size="15" letter-spacing="2" fill="#9A6B12">DECIDES</text>
+    <text x="330" y="288" text-anchor="middle" font-size="25" font-weight="bold" fill="#1e2456">Principal Operator</text>
+    <text x="330" y="316" text-anchor="middle" font-size="17" fill="#5A5A6E">Human. Terminal authority.</text>
+
+    <rect x="610" y="222" width="380" height="112" rx="14" fill="#FFFFFF" stroke="#E2D9C2" stroke-width="1.5"/>
+    <text x="800" y="256" text-anchor="middle" font-size="15" letter-spacing="2" fill="#9A6B12">ACTS</text>
+    <text x="800" y="288" text-anchor="middle" font-size="25" font-weight="bold" fill="#1e2456">Principal Assistant</text>
+    <text x="800" y="316" text-anchor="middle" font-size="17" fill="#5A5A6E">AI. One identity, many workers.</text>
+
+    <rect x="1080" y="222" width="380" height="112" rx="14" fill="#FFFFFF" stroke="#E2D9C2" stroke-width="1.5"/>
+    <text x="1270" y="256" text-anchor="middle" font-size="15" letter-spacing="2" fill="#9A6B12">CHALLENGES</text>
+    <text x="1270" y="288" text-anchor="middle" font-size="25" font-weight="bold" fill="#1e2456">Principal Advisor</text>
+    <text x="1270" y="316" text-anchor="middle" font-size="17" fill="#5A5A6E">AI. Independent review of the work.</text>
+
+    <line x1="528" y1="278" x2="602" y2="278" stroke="#e9a13b" stroke-width="3" marker-end="url(#arr)"/>
+    <line x1="998" y1="278" x2="1072" y2="278" stroke="#e9a13b" stroke-width="3" marker-end="url(#arr)"/>
+  </g>
+  <text x="800" y="364" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-style="italic" fill="#8A8578">Lead Operator and Architecture Authority sit beneath the triad, not as peers.</text>
+
+  <!-- surfaces -->
+  <text x="800" y="412" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="18" letter-spacing="4" fill="#8A8578">THE SIX SURFACES</text>
+  <text x="800" y="442" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" letter-spacing="2" fill="#9A6B12">ALWAYS-LOADED · PRESENT BEFORE THE FIRST TURN</text>
+
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <!-- MIND -->
+    <rect x="140" y="462" width="380" height="172" rx="14" fill="#FFFFFF" stroke="#E2D9C2" stroke-width="1.5"/>
+    <rect x="140" y="462" width="10" height="172" rx="5" fill="#1e2456"/>
+    <text x="172" y="506" font-size="27" font-weight="bold" fill="#1e2456">MIND</text>
+    <text x="172" y="536" font-size="17" fill="#9A6B12">How the assistant reasons</text>
+    <text x="172" y="566" font-size="16" fill="#55556A">A defined reasoning canon.</text>
+    <text x="172" y="590" font-size="16" fill="#55556A">Define terms, question assumptions,</text>
+    <text x="172" y="614" font-size="16" fill="#55556A">update on evidence.</text>
+
+    <!-- MORALS -->
+    <rect x="610" y="462" width="380" height="172" rx="14" fill="#FFFFFF" stroke="#E2D9C2" stroke-width="1.5"/>
+    <rect x="610" y="462" width="10" height="172" rx="5" fill="#1e2456"/>
+    <text x="642" y="506" font-size="27" font-weight="bold" fill="#1e2456">MORALS</text>
+    <text x="642" y="536" font-size="17" fill="#9A6B12">What constrains it</text>
+    <text x="642" y="566" font-size="16" fill="#55556A">Hard stops, soft stops, trust scope.</text>
+    <text x="642" y="590" font-size="16" fill="#55556A">No channel outranks the operator.</text>
+    <text x="642" y="614" font-size="16" fill="#55556A">Attribution: Human-Curated, AI-Enabled.</text>
+
+    <!-- MISSION -->
+    <rect x="1080" y="462" width="380" height="172" rx="14" fill="#FFFFFF" stroke="#E2D9C2" stroke-width="1.5"/>
+    <rect x="1080" y="462" width="10" height="172" rx="5" fill="#1e2456"/>
+    <text x="1112" y="506" font-size="27" font-weight="bold" fill="#1e2456">MISSION</text>
+    <text x="1112" y="536" font-size="17" fill="#9A6B12">Why it exists</text>
+    <text x="1112" y="566" font-size="16" fill="#55556A">Identity, scope, role.</text>
+    <text x="1112" y="590" font-size="16" fill="#55556A">An aide, not a peer.</text>
+  </g>
+
+  <text x="800" y="672" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" letter-spacing="2" fill="#9A6B12">READ ON NEED · POINTER-SHAPED, LOADED WHEN RELEVANT</text>
+
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <!-- MEMORY -->
+    <rect x="140" y="692" width="380" height="150" rx="14" fill="#FFFFFF" stroke="#B9AE94" stroke-width="2" stroke-dasharray="9 6"/>
+    <text x="172" y="732" font-size="27" font-weight="bold" fill="#1e2456">MEMORY</text>
+    <text x="172" y="762" font-size="17" fill="#9A6B12">What it retains</text>
+    <text x="172" y="792" font-size="16" fill="#55556A">Durable protocol with auto-flush.</text>
+    <text x="172" y="816" font-size="16" fill="#55556A">Decisions outlive sessions.</text>
+
+    <!-- METHODS -->
+    <rect x="610" y="692" width="380" height="150" rx="14" fill="#FFFFFF" stroke="#B9AE94" stroke-width="2" stroke-dasharray="9 6"/>
+    <text x="642" y="732" font-size="27" font-weight="bold" fill="#1e2456">METHODS</text>
+    <text x="642" y="762" font-size="17" fill="#9A6B12">How work is done well</text>
+    <text x="642" y="792" font-size="16" fill="#55556A">Numbered, reusable method entries.</text>
+    <text x="642" y="816" font-size="16" fill="#55556A">Deterministic scripts over judgment.</text>
+
+    <!-- MEANS -->
+    <rect x="1080" y="692" width="380" height="150" rx="14" fill="#FFFFFF" stroke="#B9AE94" stroke-width="2" stroke-dasharray="9 6"/>
+    <text x="1112" y="732" font-size="27" font-weight="bold" fill="#1e2456">MEANS</text>
+    <text x="1112" y="762" font-size="17" fill="#9A6B12">What it acts through</text>
+    <text x="1112" y="792" font-size="16" fill="#55556A">Tools, agents, skills, channels,</text>
+    <text x="1112" y="816" font-size="16" fill="#55556A">harnesses, infrastructure.</text>
+  </g>
+
+  <!-- work chain -->
+  <text x="800" y="888" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="18" letter-spacing="4" fill="#8A8578">THE WORK CHAIN · MxM LOADS AHEAD OF IT</text>
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" fill="#FFFFFF" text-anchor="middle">
+    <rect x="140" y="908" width="168" height="62" rx="10" fill="#1e2456"/><text x="224" y="946" fill="#FFFFFF">Work Package</text>
+    <rect x="332" y="908" width="168" height="62" rx="10" fill="#1e2456"/><text x="416" y="946" fill="#FFFFFF">WorkUnit</text>
+    <rect x="524" y="908" width="168" height="62" rx="10" fill="#1e2456"/><text x="608" y="946" fill="#FFFFFF">Run</text>
+    <rect x="716" y="908" width="168" height="62" rx="10" fill="#1e2456"/><text x="800" y="946" fill="#FFFFFF">Evidence</text>
+    <rect x="908" y="908" width="168" height="62" rx="10" fill="#2A2A52"/><text x="992" y="946" fill="#FFFFFF">Acceptance</text>
+    <rect x="1100" y="908" width="168" height="62" rx="10" fill="#2A2A52"/><text x="1184" y="946" fill="#FFFFFF">Integration</text>
+    <rect x="1292" y="908" width="168" height="62" rx="10" fill="#2A2A52"/><text x="1376" y="946" fill="#FFFFFF">Disposition</text>
+    <line x1="310" y1="939" x2="330" y2="939" stroke="#e9a13b" stroke-width="3" marker-end="url(#arrSm)"/>
+    <line x1="502" y1="939" x2="522" y2="939" stroke="#e9a13b" stroke-width="3" marker-end="url(#arrSm)"/>
+    <line x1="694" y1="939" x2="714" y2="939" stroke="#e9a13b" stroke-width="3" marker-end="url(#arrSm)"/>
+    <line x1="886" y1="939" x2="906" y2="939" stroke="#e9a13b" stroke-width="3" marker-end="url(#arrSm)"/>
+    <line x1="1078" y1="939" x2="1098" y2="939" stroke="#e9a13b" stroke-width="3" marker-end="url(#arrSm)"/>
+    <line x1="1270" y1="939" x2="1290" y2="939" stroke="#e9a13b" stroke-width="3" marker-end="url(#arrSm)"/>
+  </g>
+  <!-- Advisor review gate on the Evidence -> Acceptance connector -->
+  <polygon points="896,928 907,939 896,950 885,939" fill="#1e2456" stroke="#e9a13b" stroke-width="2"/>
+  <text x="800" y="1000" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-style="italic" fill="#8A8578">Each step verified before the next. The Advisor reviews at Evidence. Acceptance is the Operator's act.</text>
+
+  <!-- footer -->
+  <rect x="0" y="1024" width="1600" height="156" fill="#14142B"/>
+  <text x="800" y="1088" text-anchor="middle" font-family="Georgia, 'DejaVu Serif', serif" font-size="25" fill="#FFFFFF">The aide holds no authority of its own.</text>
+  <text x="800" y="1124" text-anchor="middle" font-family="Georgia, 'DejaVu Serif', serif" font-size="25" fill="#e9a13b">The will comes from the operator.</text>
+</svg>

@@ -1,0 +1,44 @@
+id: WP-MXK-0004
+title: Self-contained MCP framework
+status: done
+execution_class: complex
+review_class: standard
+scope: >
+  Roadmap step 4 (ADR-MXK-0002). Give every standalone meta-harness, air-gapped ones included,
+  an engine-neutral way to run any MCP-capable engine under the kernel.
+  - A standard-library MCP stdio server (JSON-RPC 2.0).
+  - A tool registry.
+  - A delegation binding that only narrows.
+  - The kernel's Assistant port as the only authority-bearing tool.
+  - Inclusion in the release and its conformance suites.
+
+  Out of scope:
+  - registering the server with any engine on any host;
+  - persisting units across processes (roadmap step 5);
+  - memory and federation evidence flow (roadmap step 6);
+  - cutting or tagging a release.
+authority_boundary: >
+  May add the MCP framework, its tests, the ADR and the release inclusion in this repository.
+  Does not authorize engine registration anywhere, a release tag, or changes to another
+  repository.
+requirements:
+  - id: REQ-MXK-MCP-01
+    text: Any MCP-capable engine can reach the kernel through a framework that needs nothing outside the standard library and the release.
+    source: "Principal Operator: TMF must not depend on Claude; each harness carries its own self-contained MCP framework"
+  - id: REQ-MXK-MCP-02
+    text: Only the Assistant's side of the kernel is reachable through MCP; Operator and Advisor acts are not.
+    source: "Principal Operator: all of MxM is under kernel enforcement"
+  - id: REQ-MXK-MCP-03
+    text: Every server runs under a launch-fixed delegation, and a derived delegation can only narrow its parent.
+    source: "Principal Operator: federated model; authority flows down"
+actions:
+  - "DONE: mxm_mcp package (server, delegation, kernel_tools) and the mxm_mcp_server.py launcher."
+  - "DONE: 9 conformance tests: protocol negotiation, notifications/unknown/invalid requests, no-delegation refusal, tool-list filtering and the exact two-tool surface, a forged operator accept denied, unit and malformed-proposal refusal, posture pin, narrow-only delegation, stdio round trip through the launched server."
+  - "DONE: mcp added to release_paths and its tests to conformance_suites."
+  - "DONE: ADR-MXK-0002."
+verification: >
+  The full repository suite passes (66 passed, 4 xfailed). The stdlib runner reports 9 passed
+  on the MCP suite. evidence/verification.md records the offline release verification.
+disposition: >
+  Done when merged. Carried forward: cross-process units (step 5), engine registration
+  (harness-side), evidence-up from subagents (step 6).

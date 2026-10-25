@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "aide_name": "personal-aide",
+  "principal_operator": "UNCONFIGURED",
+  "repository_owner": "UNCONFIGURED",
+  "operating_system": null,
+  "codex_interface": null,
+  "github_username": null,
+  "work_priorities": [],
+  "communication_preferences": [],
+  "onboarding_status": "pending"
+}

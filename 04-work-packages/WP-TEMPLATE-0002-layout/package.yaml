@@ -1,0 +1,17 @@
+id: WP-TEMPLATE-0002
+title: Align template with the reference root
+status: implemented
+scope: >
+  Adopt the reference's closed 00-06 root, canonical nested MxM contracts, memory/means
+  stores, operations layer and bootstrap chain. Retain existing history and
+  provide executable structural verification. No personal data import, runtime
+  console migration or account activation.
+authority_boundary: >
+  JD directly requested on 2026-09-08 that Jeff's root and the repository template
+  adopt the reference structure. Local migration and publication to these two existing
+  private GitHub repositories are within that scope.
+verification: >
+  Layout and lifecycle tests pass, old active paths are absent, local links
+  resolve, wrappers work outside the checkout, and remote main equals the
+  integrated commit. Jeff retains his identity; template remains unconfigured.
+disposition: structural migration verified; runtime activation remains separate

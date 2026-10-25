@@ -1,0 +1,51 @@
+id: WP-MXK-0006
+title: Revision of step 5 after independent review
+status: done
+execution_class: complex
+review_class: elevated
+scope: >
+  Disposition every finding of the Principal Advisor's REVISE review of WP-MXK-0005 (2026-09-28):
+  - replay derives effects from the signed action and decision;
+  - small-order and subgroup key validation;
+  - a defined signing value domain;
+  - the resolved opening is signed;
+  - strict, linked evidence and halt records;
+  - anchor lag and loss semantics;
+  - fault handling;
+  - corrected ADR and SPEC claims;
+  - substitution tests.
+
+  Out of scope:
+  - re-evaluating host policy on replay (stated as a limit);
+  - memory under the log (step 6);
+  - a vetted external signer;
+  - a release tag.
+authority_boundary: >
+  May change the enforcement core, its tests, the SPEC, traceability and ADRs in this
+  repository. Does not authorize a release tag, engine registration, or changes to another
+  repository, and does not decide whether the kernel is an enforcement boundary.
+requirements:
+  - id: REQ-MXK-AUT-03
+    text: An Operator or Advisor effect in the log is exactly the effect of an action signed by that role's trusted key; any other effect halts every kernel that replays it.
+    source: "Principal Advisor REVISE, 2026-09-28, finding 1; Principal Operator: revise per findings"
+  - id: REQ-MXK-AUT-04
+    text: No trusted key and no signature can verify arbitrary messages; small-order and non-subgroup keys are refused.
+    source: "Principal Advisor REVISE, 2026-09-28, finding 2"
+  - id: REQ-MXK-DOC-01
+    text: The ADR and SPEC state no guarantee stronger than the code enforces, and name what still raises and what replay does not re-check.
+    source: "Principal Advisor REVISE, 2026-09-28, claims findings"
+actions:
+  - "DONE: effect derivation and per-type preconditions in kernel _check; decision kinds per action type."
+  - "DONE: Ed25519 small-order and subgroup checks; trust registry key validation."
+  - "DONE: signing value domain (authz.canonical); kernel.opening_act and resolved-open signing."
+  - "DONE: evidence linkage (receipt/memory answer an awaiting act, kernel-written); kernel-written halts."
+  - "DONE: anchor lag moved forward on catch-up; missing anchor halts; side-effect and log-read failures recorded or halted."
+  - "DONE: tests (enforcement 149 + 3 strict xfails; 53-case substitution matrix); 33/33 mutations caught."
+  - "DONE: SPEC §7/§8 corrected; ADR-MXK-0004; ADR-MXK-0003 marked amended; TRACEABILITY."
+verification: >
+  Full repository suite and the stdlib runner pass with matching counts. The reproduced
+  waiver-as-abort forgery halts the kernel. Every one of 33 disabled defences fails the
+  suite. See evidence/verification.md.
+disposition: >
+  Done when merged. Recommended next: a follow-up Advisor review of this revision before the
+  Principal Operator decides whether the kernel is represented as an enforcement boundary.

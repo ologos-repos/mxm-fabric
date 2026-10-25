@@ -1,0 +1,36 @@
+id: WP-MXK-0010
+title: Cross-runtime enforcement conformance
+status: approved
+execution_class: complex
+review_class: elevated
+scope: >
+  Demonstrate that the enforcement core's controls (signed authorization,
+  delegation bounds, single use, expiry, replay resistance, act outcomes,
+  event-log integrity) hold when the kernel is consumed by at least one
+  additional real runtime beyond the reference test harness, and record the
+  evidence in 02-systems-baseline/2.5-verification/ with matching updates to
+  the capability traceability matrix (CAP-08, CAP-09, CAP-12, CAP-13,
+  CAP-15). Sequencing (decision D4, ADR-MXM-0002): consolidation phases
+  1-2 (WP-MXK-0014) complete first; this package then runs against the
+  mxm-core API once phase 3 exists. Running earlier against the current
+  harness requires explicit principal direction and accepts a later
+  re-run. Out of scope: claiming Operational or Authoritative status for
+  any capability, and any change to the ratified v0.2 baseline documents.
+authority_boundary: >
+  Approved by the Principal Operator 2026-10-23. Sequencing per decision D4 stands: execution runs against the mxm-core API after WP-MXK-0014 phases 1-2; approval does not advance it ahead of that dependency.
+  May add conformance harnesses, adapters, tests, and evidence records in
+  this repository, and may run the kernel inside a second consuming runtime
+  for evaluation. Does NOT authorize production deployment, external
+  publication, changes to ratified documents (those need a new ADR), or
+  conformance verdicts about any third-party product.
+actions:
+  - Select one additional consuming runtime and record why it is representative.
+  - Port or adapt the enforcement conformance and adversarial suites to run against the kernel as consumed by that runtime.
+  - Re-run the mutation check discipline in the new runtime: each defence disabled in turn must fail at the aimed test.
+  - Record results, limits, and environment in 2.5-verification; update the traceability matrix rows with the new evidence and date.
+verification: >
+  The second-runtime suite passes with the mutation check reproduced;
+  evidence records name runtime, versions, and limits; matrix attributes
+  change only where the new evidence supports them; repository suite and
+  layout verifier green.
+disposition: open

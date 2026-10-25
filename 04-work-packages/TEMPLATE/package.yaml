@@ -1,0 +1,21 @@
+id: WP-<SLUG>-NNNN
+title: <short name>
+status: proposed
+# commitment: committed | stretch   # optional; see README
+scope: >
+  What this package covers.
+
+  And explicitly what it does NOT — the out-of-scope half is what stops a package
+  from quietly growing while it is being executed.
+authority_boundary: >
+  What may proceed without re-asking, stated positively.
+
+  Then what it does NOT authorize, stated as explicitly. If the package could touch a
+  commitment, an external publication, or a verdict, name that edge here.
+actions:
+  - First planned action
+  - Second planned action
+verification: >
+  How "done" is proven. Prefer a check that can fail — a machine check, a diff, a
+  re-run — over a statement that the work was completed.
+disposition: open

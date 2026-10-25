@@ -1,0 +1,33 @@
+# CI for the MxM Fabric repository. Ported from the retired .gitea/workflows/ci.yml
+# (removed with the repo's Gitea home; the suite it guarded went unchecked
+# until the LICENSE layout break (pre-publication review,
+# item 2). Branch protection is unavailable on this plan, so this workflow
+# is advisory: its result must be read before merging, per the standing
+# workflow rules.
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  conformance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install pytest
+      - name: Repository layout
+        run: python 00-meta-model/verify-repository-layout.py
+      - name: Test suites
+        run: python -m pytest -q -p no:cacheprovider
+      # ADR-MXK-0001: every change must stay releasable. Build a release and verify it the way
+      # an air-gapped harness would: isolated interpreter, no site-packages, stdlib runner.
+      - name: Release contract (build + offline verify)
+        run: |
+          out=$(python 05-mxm-construct/means/release/release.py build --version 0.0.0-ci --out "${RUNNER_TEMP:-/tmp}/mxk-release")
+          agg=$(printf '%s' "$out" | python -c "import sys,json;print(json.load(sys.stdin)['aggregate_sha256'])")
+          python -I -S "$RUNNER_TEMP/mxk-release/05-mxm-construct/means/release/release.py" verify "${RUNNER_TEMP:-/tmp}/mxk-release" --expect "$agg"

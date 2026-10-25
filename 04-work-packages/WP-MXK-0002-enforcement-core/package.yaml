@@ -1,0 +1,35 @@
+id: WP-MXK-0002
+title: Bring the reconciled enforcement core into the kernel repository
+status: done
+execution_class: routine
+review_class: standard
+scope: >
+  Roadmap step 2. Move the enforcement core reconciled in the source meta-harness
+  (WP-TMH-0016 increments 1-2; independent review: REVISE then APPROVE for a partial,
+  non-production merge) into 05-mxm-construct/means/enforcement/ here, as the source of the
+  kernel's first release. Make it self-contained for vendoring: the audit chain it depends
+  on moves inside the package (mxm/audit_chain.py), replacing a relative load from the
+  meta-harness floor.
+
+  Out of scope, each a later roadmap step:
+  - the release and vendoring contract;
+  - the MCP framework;
+  - signed act-bound authorizations and the transactional event log;
+  - memory and federation enforcement;
+  - removing the copy in the source meta-harness. That copy stays until the meta-harness
+    vendors a release in its place.
+authority_boundary: >
+  May add the enforcement core, its tests, SPEC and traceability, and make the changes
+  needed for self-containment. Does not authorize a release, or changes in any other
+  repository.
+actions:
+  - "DONE: enforcement core copied from the source meta-harness main (mxm/, SPEC.md, TRACEABILITY.md, tests/, constitutions/, methods/)."
+  - "DONE: audit chain moved inside the package; evidence.py imports it as `from . import audit_chain`; SPEC §8 updated."
+  - "DONE: provenance recorded in SPEC and TRACEABILITY (reconciled in WP-TMH-0016, continued here)."
+  - "DONE: self-containment proven: the enforcement folder copied alone to an empty directory passes its suite (31 passed, 4 strict xfails); mxm/ imports only the Python standard library."
+verification: >
+  CI / conformance passes with the enforcement suite included (repository total: 52 passed,
+  4 strict xfails). The isolated-copy run and the stdlib-only import check pass.
+disposition: >
+  Done when merged. Known limit carried forward: the audit chain uses fcntl, so the kernel
+  is POSIX-only for now; recorded for the release contract.

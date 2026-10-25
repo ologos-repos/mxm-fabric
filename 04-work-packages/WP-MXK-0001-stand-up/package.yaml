@@ -1,0 +1,34 @@
+id: WP-MXK-0001
+title: Stand up the MxM kernel repository
+status: done
+execution_class: routine
+review_class: standard
+scope: >
+  Make this repository the MxM kernel's home: the reference implementation and conformance
+  authority that every meta-harness vendors as a pinned, offline-verified release (Issue #1).
+  The work is:
+  - a self-hosted process home with a protected main;
+  - required CI;
+  - a ref mirror;
+  - a README identifying the repository and its consumption model;
+  - a roadmap for the kernel line.
+
+  Out of scope: bringing in any kernel code, the release and vendoring mechanism, and the MCP
+  framework. Each is a later package on the roadmap.
+authority_boundary: >
+  May configure this repository's process home, branch protection, CI and mirror, and edit
+  its README, layout verifier allowance and work-package records. Does not authorize a
+  release, vendoring into any harness, or changes to any other repository.
+actions:
+  - "DONE: self-hosted process home, private, seeded from the ref mirror at cf49b83; writer collaborator granted."
+  - "DONE: main protected (no direct push; CI / conformance required; admin override blocked); read back."
+  - "DONE: ref mirror via a repository-scoped write deploy key and a 10-minute timer; first run identical."
+  - "DONE: CI workflow (layout verification + test suites); layout verifier allows .gitea and .codex, matching the meta-harness kernel."
+  - "DONE: README (identity, consumption model, roadmap)."
+  - "DONE: gate proven on PR #2: merge refused (HTTP 405) while CI pending, merged after CI passed (evidence/verification.md)."
+verification: >
+  Protection read back from the host API; the mirror run reports identical refs; this
+  package's own PR merges only after CI / conformance passes.
+disposition: >
+  Done. The kernel repository is live with a protected main, required CI and a verified ref
+  mirror. Next on the roadmap: bring in the reconciled enforcement core.

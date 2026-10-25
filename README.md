@@ -4,12 +4,11 @@
 [![Release](https://img.shields.io/github/v/tag/ologos-repos/mxm-fabric?label=mxm-kernel)](https://github.com/ologos-repos/mxm-fabric/releases)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
 
-> **Status (2026-10-25): early access.** The Python reference kernel is released as
+> **Status (2026-10-25): first public release.** The Python reference kernel is released as
 > [`mxm-kernel-v0.2.0`](https://github.com/ologos-repos/mxm-fabric/releases/tag/mxm-kernel-v0.2.0)
-> with its conformance suite. One private reference deployment vendors that release under
-> offline verification. There are no external adopters yet, and a Go implementation is the
-> target. Treat the architecture as stable enough to evaluate and the code as a reference,
-> not a supported library.
+> with its conformance suite; a Go implementation is the target. The framework itself has been
+> in daily operation for months; see [In operation](#in-operation). The public code is new,
+> so expect interfaces to move before 1.0.
 
 MxM Fabric is the governed fabric built on the MxM (multi-mode meta-harness)
 kernel: the governance and enforcement layer for agentic AI ecosystems. It
@@ -28,6 +27,30 @@ packages as the work lands.
 **Names.** The repository is `mxm-fabric`. The component it releases is the **MxM kernel**,
 tagged `mxm-kernel-vX.Y.Z`; the kernel kept its name when it moved here, so both names are
 current and mean different things.
+
+## In operation
+
+MxM is not a design waiting for its first user. It is the operating framework of the author's
+own AI ecosystem, and this repository publishes what that ecosystem already runs.
+
+**thinx-003, the reference deployment**, is a persistent AI aide that runs every engagement
+under MxM: the six surfaces loaded at session start, every significant change as a work package
+on its own branch with acceptance criteria and evidence, Principal Advisor review at the
+acceptance gate, and the vendored kernel (`mxm-kernel-v0.2.0`, offline-verified against its
+pinned aggregate) governing its memory fabric. Its own repository holds the record:
+
+| Evidence in the reference deployment | Count (2026-10-25) |
+|---|---|
+| Work-package records (scope, authority, acceptance criteria, evidence, disposition) | 409 |
+| Commits since January 2026 | 3,296 |
+| Retained Principal Advisor review records | 116 |
+| Issue closure receipts (decision and verification evidence, hash-bound) | 85 |
+
+Around it, sibling harnesses and a dozen further repositories (research programs,
+product baselines and enterprise architecture work) use the same construct: the six surfaces,
+the Principal Governance Triad, work packages and the conformance model. The self-assessment
+of thinx-003 against this repository's conformance model is kept with that deployment; the
+model it applies is [MXM-CONFORMANCE-MODEL-0001](02-systems-baseline/2.2-architecture/MXM-CONFORMANCE-MODEL-0001.md).
 
 ## How it relates to agent frameworks
 
@@ -124,7 +147,7 @@ retained as historical and component records; living identity surfaces
 | 4 | Self-contained MCP framework (stdlib, stdio) with delegation binding; registering it with each engine is harness-side | Done (WP-MXK-0004, ADR-MXK-0002) |
 | 5 | Signed, single-use, act-bound authorizations and one transactional event log | Done (WP-MXK-0005 to 0007, ADR-MXK-0003 to 0005) |
 | 6 | Memory and federation enforcement: memory operations as governed actions; one delegation model that only narrows | **Partial.** Failed memory writes are recorded and denied; durable memory before acceptance is still pending in the traceability record; federation is not yet built (WP-MXK-0013 approved) |
-| 7 | First release, and its first vendored adoption | Done: `mxm-kernel-v0.2.0`, vendored by one private reference deployment |
+| 7 | First release, and its first vendored adoption | Done: `mxm-kernel-v0.2.0`, vendored by thinx-003, the reference deployment |
 
 Next: cross-runtime conformance (WP-MXK-0010), capability assessment (WP-MXK-0011), the
 Epistemic Assurance Framework minimum implementation (WP-MXK-0012), governed TMF retrieval
